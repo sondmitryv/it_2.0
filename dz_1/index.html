@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue dz-1</title>
+</head>
+<body>
+
+	<div id="app" v-bind:class="wrapClass" v-bind:class="wrapClass">
+		<h1>{{title}}</h1>
+		<p v-html="customHtml"></p>
+		<span v-if="seen" @mouseover="hover">Сейчас меня видно</span>
+		<p>{{ message }}</p>
+		<button v-on:click="reverseMessage">Перевернуть сообщение</button>
+		 <p>{{ message }}</p>
+		 <input v-model="message"> <br> <br>
+		 <a href="#" v-on:click.prevent="alerted">Эта ссылка не работает как обычно</a> <br><br>
+		 <input v-on:keyup.enter="alertInput" v-model="placeholder" style="display:block; width: 300px;">
+		 <p v-html="render">Render text : {{render}}</p>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				title: 'Привет, Vue!',
+				message:'Это сообщение',
+				placeholder: 'Напишите здесь текст и нажмите Enter',
+				wrapClass: 'wraper',
+				customHtml: '<a href="#">Include link</a>',
+				seen: true,
+				render: '<a href="#">Render link</a>'
+			},
+			methods:{
+				reverseMessage: function () {
+					this.message = this.message.split('').reverse().join('')
+				},
+				hover: function(){
+					this.seen = false
+				},
+				alerted: function(){
+					alert('Ссылка не работает')
+				},
+				alertInput: function(){
+					alert(this.placeholder);
+				}
+			}
+		})
+	</script>
+</body>
+</html>
