@@ -12,7 +12,7 @@
       <div class="town-table-row w-full flex border border-gray-700 mb-1" v-for="(item, key) in info" :key="item.id">
           <span class="town-title-name pl-5">{{item.cityName}}</span>
           <span class="town-title-level text-center border-l  border-gray-700">{{item.pollutants[2].value}}</span>
-          <span class="town-title-temp text-center border-l  border-gray-700">{{ typeof info[key].pollutants[5].value != 'undefined' }}</span>
+          <span class="town-title-temp text-center border-l  border-gray-700">{{(typeof info[key].pollutants[5].value != 'undefined')?info[key].pollutants[5].value:'' }}</span>
       </div>
     </div>
 
