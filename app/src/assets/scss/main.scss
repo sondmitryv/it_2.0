@@ -12,17 +12,18 @@
 	width: 100%;
 	max-width: 768px;
 }
-.town-title-name{
-	flex-basis: 60%;
-}
-.town-title-level {
-    flex-basis: 30%;
-}
-.town-title-temp{
-	flex-basis: 10%;
+.table-td{
+	flex-basis: 25%;
 }
 .sort-btn{
 	display: block;
 	height: 40px;
 	line-height: 40px;
+	outline: none;
+	&:focus{
+		outline: none;
+	}
+}
+.town-table-row span{
+	height: 100%;
 }
