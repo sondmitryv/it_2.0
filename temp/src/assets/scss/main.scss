@@ -12,11 +12,8 @@
 	width: 100%;
 	max-width: 768px;
 }
-.table-td-id{
-	width: 25%;
-}
-.table-td-address{
-	width: 75%;
+.table-td{
+	flex-basis: 25%;
 }
 .sort-btn{
 	display: block;
@@ -29,22 +26,4 @@
 }
 .town-table-row span{
 	height: 100%;
-}
-.search-form{
-	&__input{
-		width: 300px;
-		height: 40px;
-	}
-	&__btn{
-		width: 100px;
-		height: 40px;
-		line-height: 40px;
-		cursor: pointer;
-	}
-}
-.more-info{
-	display:none;
-}
-.town-table-row.active.more-info {
-	display: block;
 }

@@ -5,6 +5,7 @@
         <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
     <section v-else>
+      <span>{{neinfo}}</span>
       <h1 class="main-title py-5 text-3xl text-center text-gray-700">Рівень забруднення атмосферного повітря по городам України.</h1>
       <div class="town-table mx-auto">
         <button class="sort-btn bg-green-600 text-white px-3 mx-auto mb-5" v-on:click="sortedJson()" >Сортувати за рівнем забруднення</button>
@@ -45,12 +46,14 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+
 const axios = require('axios');
 export default {
+  name:'air', 
   data() {
     return {
       info: null,
+      neinfo: null,
       errored: false,
       loading: true,
       colorLevel: chooseLevel => {
@@ -58,10 +61,22 @@ export default {
       }
     }
   },
+  /*
   mounted() {
      axios
       .get('https://cors-anywhere.herokuapp.com/https://api.saveecobot.com/output.json')
       .then(response => (this.info = response.data ))
+      .catch(error => {
+        console.log(error);
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
+  },
+  */
+  mounted() {
+     axios
+      .get('http://api.waqi.info/search/?token=1b2d298eea9f46db4c8c92d957909f1b617bdfc0&keyword=kiev')
+      .then(response => (this.neinfo = response.data ))
       .catch(error => {
         console.log(error);
         this.errored = true;
