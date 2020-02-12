@@ -23,7 +23,7 @@
           </div>
         </div>
         
-        <div @click="chooseStation(item.uid, index)" v-bind:class="{ active: showMore }" class="town-table-row  border border-gray-700 mb-1 " v-for="(item, index) in info.data" :key="item.id" >
+        <div @click="chooseStation(item.uid, index)"  class="town-table-row  border border-gray-700 mb-1 " v-for="(item, index) in info.data" :key="item.id" >
           <div class="w-full flex items-center">
             <div class="table-td-id" >
               <span class="flex justify-center">{{item.uid}}</span>
@@ -32,9 +32,9 @@
               <span class="flex items-center justify-center">{{item.station.name}}</span>
             </div>
           </div>
-          <div class="more-info">
+          <div class="more-info" v-show="showMore == index">
             <div class="more-info-col">
-              <span>{{infoStation}} </span>
+              <span>{{infoStation.data.aqi}} </span>
             </div>
           </div>
         </div> 
@@ -52,8 +52,8 @@ export default {
   name:'air', 
   data() {
     return {
-      info: null,
-      infoStation: null,
+      info: {data:[]},
+      infoStation: {data:[]},
       town: 'kiev',
       errored: false,
       loading: true,
@@ -80,19 +80,18 @@ export default {
       .get('//api.waqi.info/search/?token=1b2d298eea9f46db4c8c92d957909f1b617bdfc0&keyword=' + this.town)
       .then(response => (this.info = response.data ))
       .catch(error => {
-        //console.log(error);
+        console.log(error);
         this.errored = true;
       })
       .finally(() => (this.loading = false));
     },
     chooseStation(idStation, index){
-      console.log(index)
-      this.showMore = true;
+      this.showMore = index;
       axios
       .get('//api.waqi.info/feed/@'+idStation+'/?token=1b2d298eea9f46db4c8c92d957909f1b617bdfc0')
       .then(response => (this.infoStation = response.data ))
       .catch(error => {
-        //console.log(error);
+        console.log(error);
         this.errored = true;
       })
       .finally(() => (this.loading = false));
