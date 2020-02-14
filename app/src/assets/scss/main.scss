@@ -8,6 +8,10 @@
 @import "utils/reset";
 
 
+body{
+	background: rgba(255, 255, 255, 0.75);
+	background-size: cover;
+}
 .town-table{
 	width: 100%;
 	max-width: 768px;
@@ -27,9 +31,45 @@
 		outline: none;
 	}
 }
-.town-table-row span{
-	height: 100%;
+
+.town-table-row{
+	max-height: 46px;
+	overflow: hidden;
+	transition: max-height 0.8s;
+	&:hover{
+		-webkit-box-shadow: 0px 9px 26px -12px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 0px 9px 26px -12px rgba(0, 0, 0, 0.75);
+		box-shadow: 0px 9px 26px -12px rgba(0, 0, 0, 0.75);
+		.town-table-row__title {
+		    cursor: pointer;
+		    transition: all 0.3s;
+		    background: #48bb78;
+		    span {
+		        color: #fff;
+		        transition: all 0.3s;
+		    }
+
+		}
+	}
+	&.active {
+	    -webkit-box-shadow: 0px 9px 26px -12px rgba(0, 0, 0, 0.75);
+	    -moz-box-shadow: 0px 9px 26px -12px rgba(0, 0, 0, 0.75);
+	    box-shadow: 0px 9px 26px -12px rgba(0, 0, 0, 0.75);
+	    max-height: 500px;
+	    transition: max-height 0.8s;
+	    .town-table-row__title {
+	        cursor: pointer;
+	        transition: all 0.3s;
+	        background: #48bb78;
+	        span {
+	            color: #fff;
+	            transition: all 0.8s;
+	        }
+
+	    }
+	}
 }
+
 .search-form{
 	&__input{
 		width: 300px;
@@ -41,4 +81,54 @@
 		line-height: 40px;
 		cursor: pointer;
 	}
+}
+.data-list{
+	&__item{
+		
+	}
+
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active до версии 2.1.8 */
+    {
+    opacity: 0;
+}
+.more-info-col{
+	&_main{
+		width: 25%;
+	}
+}
+.air-index-main{
+	display: block;
+	border-radius: 10px;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	&.green{
+		background: #019966;
+	}
+	&.red{
+		background: #cc0033;
+	}
+	&.orange {
+	    background: #ff9933;
+	}
+	&.yellow {
+	    background: #ffde33;
+	}
+	&.deepred {
+	    background: #7e0023;
+	}
+	&.lilac {
+	    background: #660199;
+	}
+	
+
 }

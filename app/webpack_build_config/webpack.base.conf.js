@@ -34,7 +34,7 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/[name].[contenthash].js`,
     path: PATHS.dist,
-    publicPath: "/" 
+    /*publicPath: "/" */
   },
   optimization: {
     splitChunks: {
