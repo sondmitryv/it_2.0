@@ -41,18 +41,29 @@
 	getCountSymbol('Привет', 'и');
 	echo "<br>";
 ?>
+<form action="/" method="POST">
 
+	<p>Имя: <input name="name" type="text" ></p>
+
+	<p>Фамилия: <input name="surname" type="text"></p>
+
+	<p>E-mail: <input name="email" type="text"></p>
+
+	<p>Сообщение: <br /><textarea name="message" cols="30" rows="5"></textarea></p>
+
+	<p><input type='submit' value='Отправить'></p>
+
+</form>
 <?php
+
 	/* task 4 */
-	if(isset($_POST)){
-		$str = $_POST;
+	if($_SERVER["REQUEST_METHOD"] == 'POST'){
+		$str = serialize($_POST) ;
     	$str=trim($str);
     	$str=strip_tags($str);
     	$str=htmlspecialchars($str);
     	echo $str;
 	}
-	
-	//processingDataFromForm("     sdadadadadad daaaa <div>dffsfs</div>    ");
 	echo "<br>";
 ?>
 
