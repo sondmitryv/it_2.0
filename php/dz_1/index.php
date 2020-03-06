@@ -91,8 +91,6 @@
 			}
 		}
 	}
-	getFileExtension("myfile.docx")
+	getFileExtension("myfile.docx");
+	echo "<br>";
 ?>
-
-
-	
