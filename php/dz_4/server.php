@@ -13,6 +13,8 @@ if( $requestClass->isPost() ){
 	$requestClass->min('title', 5);
 	$requestClass->max('annotation', 10);
 	$requestClass->isEmail('email');
+	$requestClass->maxValue('views', '10');
+	$requestClass->minValue('views', '5');
 
 	$errors = $requestClass->getErrors();
 

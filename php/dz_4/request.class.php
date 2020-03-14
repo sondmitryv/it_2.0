@@ -102,7 +102,7 @@ class Request
     
 
     public function isEmail($inputName)
-    {s
+    {
         $email = $this->test_input($_POST[$inputName]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $this->errors[$inputName][] = "Введите валидный email";
@@ -116,7 +116,11 @@ class Request
      */
     public function maxValue($inputName, $maxValue)
     {
-        //todo
+        $inputData = $_POST[$inputName] ?? '';
+        $inputData = $this->clear($inputData);
+        if($inputData > $maxValue){
+            $this->errors[$inputName][] = "Значение не может быть больше {$maxValue}";
+        }
     }
 
     /**
@@ -126,10 +130,13 @@ class Request
      */
     public function minValue($inputName, $minValue)
     {
-        //todo
-    }
-
-
-    
+        $inputData = $_POST[$inputName] ?? '';
+        if(!is_numeric($inputData)){
+            $this->errors[$inputName][] = "Значение должно быть числом ";
+        }
+        if($inputData < $minValue){
+            $this->errors[$inputName][] = "Значение не может быть меньше {$minValue}";
+        }
+    } 
 }
 ?>
